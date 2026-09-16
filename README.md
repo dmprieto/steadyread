@@ -16,7 +16,7 @@ The point of Steady Read is that its limits are **structural and checkable**, no
 - **accepts no configuration from outside the app** — no component in a release build reads any value out of an incoming intent;
 - **requests only** `POST_NOTIFICATIONS` (for the control notification) and `VIBRATE` (a short tap acknowledgement).
 
-You don't have to take that on faith. `tools/declaration-ratchet.sh` reads a built release APK and checks these from the artifact itself — the declared permissions, the exported components, and the accessibility declaration. (The gesture-only capability is a value the system computes at runtime, not something stored in the APK, so the ratchet checks the declared attributes that yield it rather than the number itself.) The assertions and how to run them are in that file.
+You don't have to take that on faith. This is the source for the app published as `io.github.dmprieto.reading`. `tools/declaration-ratchet.sh` reads a built release APK and checks these from the artifact itself — the declared permissions, the exported components, and the accessibility declaration. (The gesture-only capability is a value the system computes at runtime, not something stored in the APK, so the ratchet checks the declared attributes that yield it rather than the number itself.) The assertions and how to run them are in that file.
 
 ## Licence
 
