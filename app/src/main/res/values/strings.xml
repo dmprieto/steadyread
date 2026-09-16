@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Steady Read</string>
+    <string name="service_label">Steady Read</string>
+    <string name="service_description">Scrolls the page you\'re reading so you don\'t have to keep swiping. It can\'t see what\'s on your screen, and it never uses the internet.</string>
+
+    <string name="channel_name">Auto-scroll control</string>
+    <string name="notif_text_stopped">Tap Start to scroll the page you\'re reading.</string>
+    <string name="notif_text_running">Scrolling. Touch the screen or tap Stop to stop.</string>
+    <string name="notif_text_juststopped">Stopped.</string>
+    <string name="action_start">Start</string>
+    <string name="action_stop">Stop</string>
+
+    <!-- Settings screen (SettingsActivity — the app's only activity and launcher entry). -->
+    <string name="settings_header">This device</string>
+    <string name="proximity_toggle">Proximity control — cover the top of the phone to start or stop</string>
+    <string name="proximity_unavailable">This device has no proximity sensor.</string>
+
+    <string name="speed_header">Scrolling speed</string>
+    <string name="speed_slow">Slow</string>
+    <string name="speed_normal">Normal</string>
+    <string name="speed_fast">Fast</string>
+
+    <string name="a11y_header">Accessibility</string>
+    <string name="a11y_enable_body">Steady Read needs this permission to scroll the screen for you. It can\'t see what\'s on your screen, and it never uses the internet.</string>
+    <string name="a11y_enable_button">Open accessibility settings</string>
+    <string name="a11y_control_hint">Once it\'s on, start and stop scrolling from the notifications drawer at the top of the screen. You can also stop it any time by touching the screen.</string>
+
+    <string name="about_header">About</string>
+    <string name="privacy_policy_label">Privacy policy</string>
+</resources>

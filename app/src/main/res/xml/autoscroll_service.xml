@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  android:accessibilityEventTypes is deliberately ABSENT. The attribute defaults
+  to 0, so the service subscribes to nothing and onAccessibilityEvent() is never
+  called. AutoScrollService.onServiceConnected() also sets eventTypes = 0
+  explicitly at runtime so the property is visible in code, not just by omission.
+
+  android:canRetrieveWindowContent="false" is the load-bearing line. With it the
+  platform never binds window content to this service: getRootInActiveWindow(),
+  getWindows() and friends return null/empty regardless of what the code asks
+  for. The privacy claim is enforced by the OS, not by us remembering not to call
+  those methods. Do not flip this to true.
+
+  android:isAccessibilityTool="true" is a FUNCTIONAL requirement, not a
+  submission tactic:
+
+    - It routes the Play declaration to the accessibility-tool branch, which asks
+      whether the app genuinely serves disabled users rather than whether it is
+      dangerous.
+    - It carries the exemption from Play's autonomy prohibition (policy
+      effective 28 Jan 2026).
+    - Android has been testing an Advanced Protection Mode change that blocks
+      accessibility permission grants to apps WITHOUT the flag, and revokes it
+      from installed ones. If that ships, this line is what makes the app
+      installable for its users at all.
+
+  API 30+; older platforms ignore it, so it is safe against minSdk 26. It is a
+  one-line attribute that a merge can drop silently, which is why the production
+  CI ratchet must assert its presence from the built artifact — alongside
+  capabilities == 32 and the absence of INTERNET.
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:canPerformGestures="true"
+    android:canRetrieveWindowContent="false"
+    android:description="@string/service_description"
+    android:isAccessibilityTool="true"
+    android:notificationTimeout="0" />

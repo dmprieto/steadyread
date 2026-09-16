@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Spanish (es) translations — VERIFIED on device by the fluent reviewer (the developer)
+  2026-09-10 (Moto G54, Android 15): settings screen + notification stopped/running states.
+  Brand names app_name / service_label stay "Steady Read" (untranslated).
+
+  Reviewer notes, addressed:
+    - service_description (the enable-moment string) reviewed for accuracy and its trust weight.
+    - notif_text_juststopped stays a PLAIN STATEMENT OF FACT ("Detenido."), NOT progressive
+      ("Deteniéndose…") — the Spanish form of the rejected "Stopping…".
+    - notif_text_stopped / notif_text_running were SHORTENED after an on-device finding: the fuller
+      Spanish phrasings truncated in the notification drawer (longer than the terse English). The
+      device caught what the text review could not.
+  Verb choice kept consistent throughout: Iniciar / Detener.
+
+  Speed-control strings (speed_header, speed_slow / speed_normal / speed_fast) added 2026-09-16 and VERIFIED
+  on device by the fluent reviewer (the developer): Slow / Normal / Fast → Lenta / Normal / Rápida, fit in
+  the radio rows.
+-->
+<resources>
+    <string name="app_name">Steady Read</string>
+    <string name="service_label">Steady Read</string>
+    <string name="service_description">Desplaza la página que estás leyendo para que no tengas que deslizar todo el tiempo. No puede ver lo que hay en tu pantalla, y nunca usa internet.</string>
+
+    <string name="channel_name">Control de desplazamiento automático</string>
+    <string name="notif_text_stopped">Toca Iniciar para desplazar tu lectura.</string>
+    <string name="notif_text_running">Desplazando. Toca la pantalla o Detener.</string>
+    <string name="notif_text_juststopped">Detenido.</string>
+    <string name="action_start">Iniciar</string>
+    <string name="action_stop">Detener</string>
+
+    <string name="settings_header">Este dispositivo</string>
+    <string name="proximity_toggle">Control por proximidad — cubre la parte de arriba del teléfono para iniciar o detener</string>
+    <string name="proximity_unavailable">Este dispositivo no tiene sensor de proximidad.</string>
+
+    <!-- Speed control (added 2026-09-16, three steps) — verified on device by the fluent reviewer. -->
+    <string name="speed_header">Velocidad de desplazamiento</string>
+    <string name="speed_slow">Lenta</string>
+    <string name="speed_normal">Normal</string>
+    <string name="speed_fast">Rápida</string>
+
+    <string name="a11y_header">Accesibilidad</string>
+    <string name="a11y_enable_body">Steady Read necesita este permiso para desplazar la pantalla por ti. No puede ver lo que hay en tu pantalla, y nunca usa internet.</string>
+    <string name="a11y_enable_button">Abrir ajustes de accesibilidad</string>
+    <string name="a11y_control_hint">Una vez activado, inicia y detén el desplazamiento desde el panel de notificaciones en la parte de arriba de la pantalla. También puedes detenerlo en cualquier momento tocando la pantalla.</string>
+
+    <string name="about_header">Acerca de</string>
+    <string name="privacy_policy_label">Política de privacidad</string>
+</resources>

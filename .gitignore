@@ -1,0 +1,29 @@
+*.iml
+.gradle/
+.DS_Store
+
+# Build output. Note: no leading slash — `/build` would only match the root and
+# would let app/build through.
+build/
+/captures
+.externalNativeBuild
+.cxx
+
+# Signing material — NEVER commit (this repo is public-bound). Belt-and-braces:
+# the keystore lives outside the repo, but ignore these so an accidental copy
+# here can't be added.
+*.jks
+*.keystore
+keystore.properties
+
+# Android Studio "Generate Signed APK" output (signed APKs are build artifacts).
+/app/release/
+
+# Machine-specific: contains the absolute SDK path.
+local.properties
+
+# Contains device serials, absolute paths, and local run configurations.
+.idea/
+
+# Local tooling config, not project source.
+.claude/

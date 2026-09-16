@@ -1,0 +1,8 @@
+[versions]
+# AGP 9.0+ ships Kotlin support built in, so there is no separate Kotlin plugin
+# here on purpose -- applying org.jetbrains.kotlin.android as well is a hard
+# error (https://issuetracker.google.com/438678642).
+agp = "9.0.0"
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }

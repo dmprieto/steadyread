@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Plain DeviceDefault look (dark action bar over light content), unchanged from the framework
+      default this app was using.
+
+      Edge-to-edge: apps targeting SDK 35+ draw edge-to-edge (content under the system bars). This was
+      previously suppressed with windowOptOutEdgeToEdgeEnforcement, but that opt-out is IGNORED on
+      Android 16 (SDK 36+) — the draw-under returned and the top of the settings screen (the proximity
+      toggle) was clipped off. The opt-out is removed; the settings screen now owns its insets in code
+      (SettingsActivity.applyContentInsets), padding the content by the system-bar insets on every
+      edge-to-edge platform. Android 15 and Android 16 take the same path, so the fix is verifiable on
+      Android 15 hardware.
+    -->
+    <style name="Theme.SteadyRead" parent="@android:style/Theme.DeviceDefault.Light.DarkActionBar" />
+</resources>

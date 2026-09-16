@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+      PRIVACY SURFACE - the whole point of this app.
+
+      1. No INTERNET permission is declared. The tools:node="remove" below is a
+         belt-and-braces assertion: if any future dependency's manifest tries to
+         merge INTERNET in, the merge strips it and the app still cannot open a
+         socket. Keep this line even when the dependency list is empty.
+      2. The service declares canRetrieveWindowContent="false" (see
+         res/xml/autoscroll_service.xml). That is an OS-enforced structural
+         property, not a code-discipline promise: getRootInActiveWindow() and
+         friends return null no matter what the code asks for.
+      3. The only runtime permission is POST_NOTIFICATIONS, for the control
+         notification.
+      4. VIBRATE is a normal (install-time, auto-granted) permission: no privacy
+         implication, no network or content access, does not touch capabilities=32.
+         It is for the rule-7 haptic acknowledgement - the notification path has a
+         ~1.5s collapse wait that is silent to a user who cannot see the screen, so
+         a short tick confirms the tap registered. Feature-detected via
+         Vibrator.hasVibrator() and a clean no-op where absent (e.g. a tablet).
+    -->
+    <uses-permission
+        android:name="android.permission.INTERNET"
+        tools:node="remove" />
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@android:drawable/ic_media_play"
+        android:label="@string/app_name"
+        android:localeConfig="@xml/locales_config"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SteadyRead">
+
+        <!--
+          CONTROL SURFACE - the second thing a stranger can check in one command.
+
+          android:exported="false" and no <intent-filter>, so this is reachable
+          only by an explicit intent from this app's own uid. The notification's
+          PendingIntents are the only sender.
+
+          The property to hold, and the one the ratchet asserts: in a release
+          build the accessibility service is the only component with
+          android:exported="true" for a platform reason (guarded by
+          BIND_ACCESSIBILITY_SERVICE), and the settings screen is the only other,
+          exported because it is the launcher entry. Everything else is
+          unreachable from outside the app.
+
+          What this replaces: a runtime-registered receiver with
+          RECEIVER_EXPORTED, so that `adb shell am broadcast` could drive it,
+          and so could any other installed app, with no permission and no user
+          interaction. Its extras were not merely configuration. `repress=true`
+          defeats touch-to-stop, the app's only safety property; `leadin=false`
+          with `speed=6` drops cruise under the long-press threshold and makes
+          the synthetic finger long-press whatever is beneath it, navigating the
+          user out of their app. Measured on hardware, both of them.
+
+          This receiver reads no extras at all, so there is nothing to widen.
+        -->
+        <receiver
+            android:name=".ControlReceiver"
+            android:exported="false" />
+
+        <service
+            android:name=".AutoScrollService"
+            android:exported="true"
+            android:label="@string/service_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/autoscroll_service" />
+        </service>
+
+        <!--
+          SETTINGS SCREEN + LAUNCHER ENTRY. The reading app was
+          otherwise activity-less; stripping the switch path took its only screen.
+          This is the one place a non-developer user lands: the accessibility
+          enable path, the proximity opt-in, and an (inert) privacy-policy row.
+
+          It is exported because a launcher activity must be. It reads no intent
+          extras and only shows on-device toggles, so an external start widens no
+          safety property. It is the second (and only other) entry on the
+          ratchet's exported allowlist, added deliberately
+          (tools/declaration-ratchet.sh).
+        -->
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

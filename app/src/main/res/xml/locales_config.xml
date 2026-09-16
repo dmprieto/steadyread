@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Per-app language picker (Android 13+ / API 33): lets Steady Read be set to Spanish independently
+  of the device locale (Settings > Apps > Steady Read > Language). On < API 33 this is ignored and
+  values-es still selects automatically via the device locale. No new dependency, no AndroidX.
+-->
+<locale-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <locale android:name="en" />
+    <locale android:name="es" />
+</locale-config>
