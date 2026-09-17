@@ -223,8 +223,11 @@ done
 # no longer declared is stale, and would silently re-authorise it if a dependency
 # reintroduced it later. Require every allowlisted permission to still be declared.
 STALE_PERMS=""
+# DECLARED_PERMS comes back newline-separated from the grep|sed above; the
+# substring test needs space delimiters, so collapse it (an interior newline
+# would otherwise make every entry read as absent and fail this check falsely).
 for a in $ALLOWED_PERMISSIONS; do
-    case " $DECLARED_PERMS " in
+    case " $(echo $DECLARED_PERMS) " in
         *" $a "*) ;;
         *) STALE_PERMS="$STALE_PERMS $a" ;;
     esac
@@ -271,8 +274,10 @@ done
 # name. Requiring every allowlisted name to still be present forces the list to
 # shrink with the surface -- the exported allowlist self-tightens, not only grows.
 STALE=""
+# EXPORTED is newline-separated from the awk above; collapse it for the same
+# reason as the permission staleness check (the substring test needs spaces).
 for a in $ALLOWED_EXPORTED; do
-    case " $EXPORTED " in
+    case " $(echo $EXPORTED) " in
         *" $a "*) ;;
         *) STALE="$STALE $a" ;;
     esac
