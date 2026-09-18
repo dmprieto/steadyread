@@ -1,0 +1,25 @@
+<!--
+  App icon foreground: the Material Symbols "flex_direction" glyph.
+  Source: Google Material Symbols, licensed Apache-2.0 (attribution required).
+  The glyph's native 960x960 path is undone from its -960 y-offset (inner group)
+  and scaled to ~66% about the centre (outer group) so the compound shape sits
+  inside the adaptive-icon safe zone (central 66 of 108dp) and does not clip on
+  launchers that mask to a circle.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960">
+    <group
+        android:pivotX="480"
+        android:pivotY="480"
+        android:scaleX="0.66"
+        android:scaleY="0.66">
+        <group android:translateY="960">
+            <path
+                android:fillColor="#1F1F1F"
+                android:pathData="M80-160v-280h360v280H80Zm0-360v-280h360v280H80Zm80-80h200v-120H160v120Zm560 440L520-360l56-56 104 103v-487h80v487l104-103 56 56-200 200Z" />
+        </group>
+    </group>
+</vector>
