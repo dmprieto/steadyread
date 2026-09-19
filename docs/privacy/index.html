@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy for Steady Read</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 4rem;
+    color: #1a1a1a;
+    background: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e6e6e6; background: #131313; }
+    a { color: #8ab4f8; }
+    code { background: #2a2a2a; }
+  }
+  h1 { font-size: 1.6rem; line-height: 1.25; }
+  h2 { font-size: 1.2rem; margin-top: 2rem; }
+  code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.95em; }
+  .meta { font-size: 0.95rem; margin: 1rem 0 2rem; padding-bottom: 1rem; border-bottom: 1px solid #ccc; }
+  .meta p { margin: 0.25rem 0; }
+</style>
+</head>
+<body>
+
+<h1>Privacy Policy for Steady Read</h1>
+
+<div class="meta">
+  <p><strong>Effective date:</strong> [set when published]</p>
+  <p><strong>Applies to:</strong> Steady Read (Android application, package <code>io.github.dmprieto.reading</code>).</p>
+  <p><strong>Publisher / data controller:</strong> Diana Prieto</p>
+  <p><strong>Contact:</strong> <a href="mailto:contact.steadyread@gmail.com">contact.steadyread@gmail.com</a></p>
+</div>
+
+<h2>1. Summary</h2>
+<p>Steady Read collects no data. It has no internet permission, so it cannot send anything anywhere. It cannot read the contents of your screen. Everything the app does happens on your device. There is nothing to opt out of, because there is nothing collected.</p>
+
+<h2>2. What data we collect</h2>
+<p><strong>None.</strong> Steady Read does not collect, store off-device, transmit, or share any personal or usage data.</p>
+<ul>
+  <li>The app declares <strong>no internet permission</strong> (<code>INTERNET</code> is explicitly removed from the app's manifest), so it has <strong>no ability to open a network connection</strong>. No analytics, no crash reporting to a server, no advertising, no tracking, no cloud storage.</li>
+  <li>The app runs as an Android accessibility service configured to <strong>dispatch scroll gestures only</strong>. It is declared so that Android <strong>does not give it access to the content of your screen</strong> (technically: <code>canRetrieveWindowContent="false"</code> and it subscribes to no accessibility events). It cannot see the text, images, form fields, passwords, or any other content of the apps you use.</li>
+  <li>Your settings (such as scrolling speed and whether proximity control is on) are stored <strong>only on your device</strong> and never leave it.</li>
+</ul>
+
+<h2>3. What data we share</h2>
+<p><strong>None.</strong> Because the app collects nothing and has no network access, there is nothing to share, sell, or transfer to any third party.</p>
+
+<h2>4. Permissions the app requests, and why</h2>
+<p>Steady Read requests exactly two permissions, and no others:</p>
+<ul>
+  <li><strong>Notifications (<code>POST_NOTIFICATIONS</code>):</strong> to show the control notification you use to start and stop scrolling. No content, and nothing is sent anywhere.</li>
+  <li><strong>Vibration (<code>VIBRATE</code>):</strong> for a short haptic tick that confirms a tap registered. It touches no data and no network. (On devices with no vibrator, this does nothing.)</li>
+</ul>
+<p>Steady Read also asks you to turn on its <strong>accessibility service</strong> in your device settings. It uses this solely to <strong>scroll the screen for you</strong>, to dispatch a scroll gesture. Android grants it nothing more: it has no access to your screen's contents and cannot read what any app is showing.</p>
+<p>The app requests <strong>no</strong> access to the internet, your location, contacts, camera, microphone, photos, files, or account information.</p>
+
+<h2>5. Data storage, retention, and deletion</h2>
+<p>The only data the app holds is your on-device settings. It is stored locally on your device, is never backed up off the device by the app (<code>android:allowBackup="false"</code>), and is removed when you uninstall the app. There is no server-side data, so there is nothing for us to retain or delete on your behalf.</p>
+
+<h2>6. No camera, no microphone, no network</h2>
+<p>Steady Read declares <strong>no camera, no microphone, and no network access</strong>, and it <strong>cannot read the content of your screen.</strong> It starts a scroll from <strong>proximity (covering the top of a phone that has the sensor) or the control notification, never a camera.</strong> These are not promises about our conduct. They are <strong>structural properties you can check</strong> (see section 7).</p>
+
+<h2>7. You do not have to take our word for it</h2>
+<p>Steady Read's source code is public at <a href="https://github.com/dmprieto/steadyread">github.com/dmprieto/steadyread</a> (licensed GPL-3.0). Anyone with Android developer tools can confirm, from the app package itself, that it declares no internet permission and runs with screen-content access turned off. A plain-language page explains <a href="../verify/">how to check these claims</a>.</p>
+
+<h2>8. Research participation is separate</h2>
+<p>Steady Read the app collects nothing. If you take part in the research beta, your participation is separate and is covered by its own participation terms.</p>
+
+<h2>9. Children</h2>
+<p>Steady Read is a general-purpose reading utility and is not directed at children. It collects no data from anyone, including children.</p>
+
+<h2>10. Changes to this policy</h2>
+<p>If this policy changes, the updated version will be posted at this URL with a new effective date.</p>
+
+<h2>11. Contact</h2>
+<p>Questions about this policy: <a href="mailto:contact.steadyread@gmail.com">contact.steadyread@gmail.com</a>.</p>
+
+</body>
+</html>

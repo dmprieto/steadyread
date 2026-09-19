@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to check Steady Read's privacy claims</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 4rem;
+    color: #1a1a1a;
+    background: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e6e6e6; background: #131313; }
+    a { color: #8ab4f8; }
+    code, pre { background: #2a2a2a; }
+  }
+  h1 { font-size: 1.6rem; line-height: 1.25; }
+  h2 { font-size: 1.2rem; margin-top: 2rem; }
+  code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.95em; }
+  pre { background: #f0f0f0; padding: 0.75rem; border-radius: 4px; overflow-x: auto; }
+  pre code { background: none; padding: 0; }
+  .lead { font-size: 1.05rem; }
+</style>
+</head>
+<body>
+
+<h1>How to check Steady Read's privacy claims</h1>
+
+<p class="lead">Steady Read makes a few claims about what it cannot do. You do not have to take our word for them. This page says what the claims are, in plain terms, and how anyone with the right tools can confirm them from the app itself.</p>
+
+<h2>The claims, in plain terms</h2>
+<ul>
+  <li>It has <strong>no access to the internet</strong>. It cannot send anything anywhere.</li>
+  <li>It <strong>cannot read the content of your screen</strong>.</li>
+  <li>It requests <strong>no camera and no microphone</strong>.</li>
+  <li>Everything it does happens <strong>on your device</strong>.</li>
+</ul>
+<p>These are not promises about how we behave. They are properties of the app itself, built in and checkable.</p>
+
+<h2>Why they can be checked</h2>
+<p>Steady Read's source code is public, and the claims can be read straight off the installed app package or the source. If the technical steps below are not for you, that is fine: the plain version above is the whole story, and anyone with a bit of Android experience can confirm it for you.</p>
+<p>Source code: <a href="https://github.com/dmprieto/steadyread">github.com/dmprieto/steadyread</a> (licensed GPL-3.0).</p>
+
+<h2>How to check it yourself</h2>
+<p>These steps need a computer with the Android SDK build-tools and <code>adb</code>.</p>
+
+<h3>1. Which permissions the app declares</h3>
+<p>Run this against the app package (<code>aapt2</code> is part of the Android build-tools):</p>
+<pre><code>aapt2 dump permissions app-release.apk</code></pre>
+<p>You should see exactly two permissions:</p>
+<pre><code>android.permission.POST_NOTIFICATIONS
+android.permission.VIBRATE</code></pre>
+<p>No <code>INTERNET</code>, no <code>CAMERA</code>, no <code>RECORD_AUDIO</code>, and no advertising ID (<code>AD_ID</code>). No network permission of any kind.</p>
+
+<h3>2. What the accessibility service is allowed to do</h3>
+<p>With the app installed and its accessibility service turned on, run:</p>
+<pre><code>adb shell dumpsys accessibility</code></pre>
+<p>Find the Steady Read service in the output. It runs with <code>capabilities=32</code>, which is gesture dispatch only, and <code>canRetrieveWindowContent=false</code>, which is the setting that means it cannot read the content of your screen. It also subscribes to no accessibility events (<code>eventTypes</code> is empty).</p>
+
+<h2>What this covers, and what it does not</h2>
+<p>These checks describe the app you install. A future version is checkable the same way, against the package you actually have. The check is against the app itself, not a description of it, which is the point.</p>
+
+<p><a href="../privacy/">Back to the privacy policy</a></p>
+
+</body>
+</html>
