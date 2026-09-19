@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Typeface
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
@@ -28,8 +29,7 @@ import android.widget.TextView
  *     e.g. the SM-P200).
  *  2. An accessibility-service enable path — a button into system accessibility settings. Enabling the
  *     service is the first step a real user meets.
- *  3. A privacy-policy row, wired but inert — disabled, the URL a placeholder constant, until a policy
- *     is actually hosted. Turning it on is one change: set isEnabled true and launch the URL.
+ *  3. A privacy-policy row that opens the hosted policy in the browser ([PRIVACY_POLICY_URL]).
  *
  * UI is built programmatically: the app ships no layouts. Deliberately plain — this screen wants its
  * own accessibility-focused design pass.
@@ -169,15 +169,18 @@ class SettingsActivity : Activity() {
     }
 
     /**
-     * The privacy-policy row, wired but inert. Disabled and non-launching until
-     * a policy is hosted; [PRIVACY_POLICY_URL] is a placeholder, deliberately not a live link.
+     * The privacy-policy row. Opens the hosted policy at [PRIVACY_POLICY_URL] in the browser.
      */
     private fun addAboutSection() {
         addHeader(getString(R.string.about_header))
         container.addView(
             button(getString(R.string.privacy_policy_label)) {
-                // Inert until a policy is hosted; see PRIVACY_POLICY_URL.
-            }.apply { isEnabled = false }
+                try {
+                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(PRIVACY_POLICY_URL)))
+                } catch (e: android.content.ActivityNotFoundException) {
+                    // No browser available; do nothing rather than crash.
+                }
+            }
         )
     }
 
@@ -232,10 +235,7 @@ class SettingsActivity : Activity() {
          */
         val SPEED_STEPS = listOf(6.0, 12.0, 20.0)
 
-        /**
-         * Placeholder — no privacy policy is hosted yet. The About row stays disabled and
-         * non-launching until this is a real URL. Intentionally not a live link.
-         */
-        private const val PRIVACY_POLICY_URL = ""
+        /** The hosted privacy policy. The About row opens this in the browser. */
+        private const val PRIVACY_POLICY_URL = "https://dmprieto.github.io/steadyread/privacy/"
     }
 }
