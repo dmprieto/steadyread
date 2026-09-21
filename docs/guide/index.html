@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Steady Read User Guide</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 4rem;
+    color: #1a1a1a;
+    background: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e6e6e6; background: #131313; }
+    a { color: #8ab4f8; }
+    body code { background: #2a2a2a; }
+  }
+  h1 { font-size: 1.6rem; line-height: 1.25; }
+  h2 { font-size: 1.25rem; margin-top: 2.25rem; }
+  code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.95em; }
+  .callout {
+    margin: 1.5rem 0;
+    padding: 1rem 1.1rem;
+    border: 2px solid #b00020;
+    border-radius: 6px;
+    background: #fff5f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    .callout { background: #241414; border-color: #f28b82; }
+  }
+  .callout h2 { margin-top: 0; }
+  .label { font-weight: 600; }
+  ul { padding-left: 1.3rem; }
+  li { margin: 0.4rem 0; }
+</style>
+</head>
+<body>
+
+<h1>Steady Read: a short guide</h1>
+
+<p>Steady Read scrolls the page you are reading, slowly and steadily, so you do not have to keep swiping.
+You start it, and you read. This guide is for someone setting it up on their own phone, on their own or with
+someone helping.</p>
+
+<div class="callout">
+  <h2>First: who this is not for</h2>
+  <p><strong>If moving text makes you feel sick or dizzy, this is the wrong app for you.</strong> Steady Read
+  moves the whole page smoothly and continuously. If that kind of motion is uncomfortable, what you want is
+  something that jumps a whole page at a time, not something that scrolls. Please do not install this one.</p>
+</div>
+
+<h2>What it does, and what it does not do</h2>
+<p>It scrolls the page you are reading at a steady pace, in whatever app you are already reading in, so you do
+not have to keep swiping.</p>
+<p>What it does <strong>not</strong> do:</p>
+<ul>
+  <li>It does <strong>not</strong> know what is on your screen. It moves the page; it cannot see the words.</li>
+  <li>It does <strong>not</strong> read anything aloud. It is not a screen reader.</li>
+  <li>It will <strong>not</strong> notice if the page jumps on its own or an advertisement loads and shifts
+  things. It cannot tell the page moved, so it just keeps scrolling at the pace you set.</li>
+</ul>
+<p>Why it works this way, and how you can check it for yourself, is on the
+<a href="../verify/">how to check these claims</a> page and in the
+<a href="../privacy/">privacy policy</a>.</p>
+
+<h2>Installing it</h2>
+<p>Steady Read is given out through a Google Play <strong>closed test</strong>. You open the opt-in link once,
+on the phone you will use it on, and accept the invitation; then you install it from Google Play like any other
+app.</p>
+<p><!-- PLACEHOLDER: the closed-track opt-in link is created when a track opens for a specific person.
+Fill in the real Play opt-in URL before this page is used. -->
+<em>[The opt-in link goes here. If you were given the app but not a link, or you found the project online and
+would like access, write to <a href="mailto:contact.steadyread@gmail.com">contact.steadyread@gmail.com</a> and
+you will be added.]</em></p>
+
+<h2>Turning on the accessibility service</h2>
+<p>This is the one step that looks alarming, and it is worth reading slowly.</p>
+<p>After you install Steady Read and open it, it will ask you to turn on its <strong>accessibility
+service</strong>. When you do, <strong>Android</strong> (not Steady Read) shows a strongly worded warning. It
+describes the broadest things accessibility services can do, because it is written to cover all of them.</p>
+<p>What Steady Read actually asks Android for is <strong>one thing: permission to scroll, to dispatch a scroll
+gesture.</strong> Android grants it nothing more. It has no way to read the text or images on your screen, and
+no way to use the internet. This is not us promising to behave; <strong>Android itself enforces it</strong>, and
+you can confirm it yourself on the <a href="../verify/">how to check these claims</a> page.</p>
+<p>In the app, tap <span class="label">Open accessibility settings</span>, find <strong>Steady Read</strong>
+in the list, turn it on, and accept Android's prompt. If you are setting this up with someone helping you, this
+is a good moment to have them read the warning with you.</p>
+
+<h2>Using it</h2>
+<p>Once the service is on, you control Steady Read from the <strong>notification</strong>, the one titled
+<em>Auto-scroll control</em> in your notification drawer at the top of the screen. You do not go back into the
+app to use it.</p>
+<ul>
+  <li><span class="label">Start and stop:</span> open the notification drawer and tap <strong>Start</strong> to
+  begin scrolling, and <strong>Stop</strong> to stop. After you tap Start there is a short pause before
+  scrolling begins; that is normal. If you have just stopped it, wait a moment before tapping Start again, or
+  the tap may not take.</li>
+  <li><span class="label">Touch the screen to stop:</span> while it is scrolling, <strong>touching the screen
+  stops it immediately.</strong> This is always the fastest and most reliable way to stop, and it works no
+  matter how it was started.</li>
+  <li><span class="label">Proximity (on phones that have the sensor):</span> if you turn on
+  <em>Proximity control</em> in the app, you can <strong>cover the top of the phone to start or stop</strong>
+  scrolling, without touching the screen. Bring your hand close, within about 2 cm of the top of the phone, and
+  it may take a try to find the spot. Not every phone has the sensor this needs; if yours does not, the app
+  tells you so and this option simply is not available.</li>
+  <li><span class="label">Speed:</span> in the app's <em>Scrolling speed</em> setting you can choose
+  <strong>Slow</strong>, <strong>Normal</strong>, or <strong>Fast</strong>. It starts on Normal. If that feels
+  too fast or too slow, you can change it any time.</li>
+</ul>
+
+<h2>Questions</h2>
+<p>You can write to <a href="mailto:contact.steadyread@gmail.com">contact.steadyread@gmail.com</a>. Steady Read
+is free and open source; its code is at
+<a href="https://github.com/dmprieto/steadyread">github.com/dmprieto/steadyread</a>.</p>
+
+</body>
+</html>
